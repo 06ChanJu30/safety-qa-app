@@ -77,10 +77,7 @@ st.write("검색 결과가 정확하지 않거나 시스템 오류가 발생 시
 
 col1, col2 = st.columns([1, 2])
 with col1:
-    st.markdown("**문의처:** 백찬주")
+    st.markdown("**이메일:** king990630@gmail.com")
     st.markdown("**카카오톡 ID:** lilaclil")
-with col2:
-    # 이메일 주소를 실제 주소로 변경하여 사용하세요
-    st.link_button("📧 문의 메일 보내기", "king990630@gmail.com")
 
 st.caption("📄 시스템 관련 문의사항은 언제든 환영합니다.")
