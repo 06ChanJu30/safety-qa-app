@@ -24,7 +24,8 @@ def load_qa_data():
 df = load_qa_data()
 
 if df.empty:
-    st.warning("데이터베이스 파일(qa_database.json)을 찾을 수 없습니다.")
+    st.warning("데이터베이스 파일(qa_database.json)이 비어있거나 찾을 수 없습니다.")
+    st.write(f"경로 확인: {JSON_FILE_PATH}") # 경로가 어디를 가리키는지 화면에 표시
     st.stop()
 
 # 3. 검색 필터 (문서 종류 선택)
