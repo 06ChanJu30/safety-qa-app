@@ -73,12 +73,12 @@ if query:
 # 6. 하단 정보 및 문의처
 st.divider()
 st.markdown("### 📞 도움이 필요하신가요?")
-st.write("검색 결과가 정확하지 않거나 시스템 오류가 발생하면 아래 담당자에게 연락해 주세요.")
+st.write("검색 결과가 정확하지 않거나 시스템 오류가 발생 시 아래 연락처로 문의바랍니다.")
 
 col1, col2 = st.columns([1, 2])
 with col1:
-    st.markdown("**담당자:** 백찬주")
-    st.markdown("**전화:** 010-2528-5706")
+    st.markdown("**문의처:** 백찬주")
+    st.markdown("**카카오톡 ID:** lilaclil")
 with col2:
     # 이메일 주소를 실제 주소로 변경하여 사용하세요
     st.link_button("📧 문의 메일 보내기", "king990630@gmail.com")
