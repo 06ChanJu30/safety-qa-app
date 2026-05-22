@@ -7,7 +7,7 @@ import os
 st.set_page_config(page_title="안전보건 질의회시 검색기", page_icon="💡", layout="centered")
 
 st.title("💡 안전보건 질의회시 통합 검색")
-st.caption("폭염 관련 산업안전보건규칙/산업안전보건법 질의회시 검색기")
+st.caption("폭염 관련 산업안전보건규칙/산업안전보건법 질의회시 검색")
 
 # 2. 데이터 불러오기
 # app.py와 qa_database.json이 같은 폴더에 있어야 합니다.
