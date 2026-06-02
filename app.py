@@ -108,7 +108,5 @@ col1, col2 = st.columns([1, 2])
 with col1:
     st.markdown("**담당자:** 안전팀 백찬주 대리")
     st.markdown("**전화:** 010-2528-5706")
-with col2:
-    st.link_button("📧 문의 메일 보내기", "mailto:이메일입력@company.com")
 
 st.caption("📄 시스템 관련 문의사항은 언제든 환영합니다.")
