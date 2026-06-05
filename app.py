@@ -8,7 +8,7 @@ import os
 st.set_page_config(page_title="안전보건 질의회시 검색기", page_icon="logo.png", layout="centered")
 
 # 화면 메인 타이틀에 로고 이미지와 글자 나란히 배치하기
-col1, col2 = st.columns([1, 1])
+col1, col2 = st.columns([1, 2])
 with col1:
     # 화면에 띄울 로고 크기(width)는 원하시는 대로 숫자(예: 60, 80)를 바꿔서 조절할 수 있습니다.
     st.image("logo.png", width=800) 
