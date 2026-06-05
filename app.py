@@ -11,7 +11,7 @@ st.set_page_config(page_title="안전보건 질의회시 검색기", page_icon="
 col1, col2 = st.columns([1, 8])
 with col1:
     # 화면에 띄울 로고 크기(width)는 원하시는 대로 숫자(예: 60, 80)를 바꿔서 조절할 수 있습니다.
-    st.image("logo.png", width=200) 
+    st.image("logo.png", width=800) 
 with col2:
     st.title("안전보건 질의회시 통합 검색")
 
