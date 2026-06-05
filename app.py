@@ -3,13 +3,21 @@ import pandas as pd
 import json
 import os
 
-# 1. 페이지 기본 설정
-st.set_page_config(page_title="안전보건 질의회시 검색기", page_icon="💡", layout="centered")
+# 1. 페이지 기본 설정 (브라우저 상단 탭 아이콘을 회사 로고로 변경)
+# 업로드하신 파일 이름이 다르면 아래 "logo.png" 부분을 그 이름으로 바꿔주세요.
+st.set_page_config(page_title="안전보건 질의회시 검색기", page_icon="logo.png", layout="centered")
 
-st.title("💡 안전보건 질의회시 통합 검색")
+# 화면 메인 타이틀에 로고 이미지와 글자 나란히 배치하기
+col1, col2 = st.columns([1, 8])
+with col1:
+    # 화면에 띄울 로고 크기(width)는 원하시는 대로 숫자(예: 60, 80)를 바꿔서 조절할 수 있습니다.
+    st.image("logo.png", width=65) 
+with col2:
+    st.title("안전보건 질의회시 통합 검색")
+
 st.caption("폭염, 산안법, 중처법, 안전보건관리비 등 각종 안전보건 질의회시 통합 검색 엔진")
 
-# 🌟 추가 기능: 캐시 초기화 버튼 (데이터가 꼬이거나 안 나올 때 누르면 한방에 해결)
+# 🌟 추가 기능: 캐시 초기화 버튼
 if st.button("🔄 최신 데이터 불러오기 (검색 먹통 시 클릭!)"):
     st.cache_data.clear()
     st.rerun()
