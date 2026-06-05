@@ -44,18 +44,25 @@ def load_and_merge_data():
             if col not in df.columns:
                 df[col] = ""
             
-            # 🌟 에러 방어 핵심 2: 모든 데이터를 완벽한 문자로 강제 변환 (숫자 섞임, 빈칸으로 인한 뻗음 방지)
+            # 🌟 에러 방어 핵심 2: 모든 데이터를 완벽한 문자로 강제 변환
             df[col] = df[col].fillna("").astype(str)
 
-        # 문서 이름 예쁘게 바꾸기
-        df['doc_type'] = df['doc_type'].replace({
-            '산업안전보건법 질의회시집': '📘 산업안전보건법 질의회시집(22.05)',
-            '폭염 산업안전보건규칙': '☀️ 산업안전보건규칙 질의회시집_폭염 관련(26.05)',
-            '중대재해처벌법 질의회시': '⚖️ 중대재해처벌법 질의회시집(23.05)',
-            '중대재해처벌법': '⚖️ 중대재해처벌법 질의회시집(23.05)', 
-            '안전보건관리비 질의회시': '💰 산업안전보건관리비 질의회시집(25.06)',
-            '건설업 산업안전보건관리비': '💰 산업안전보건관리비 질의회시집(25.06)'
-        })
+        # 🌟 에러 방어 핵심 4: 눈에 보이지 않는 띄어쓰기나 미세한 글자 차이로 인해 이름이 안 바뀌는 현상 원천 차단!
+        def rename_doc_type(name):
+            name = str(name).strip() # 앞뒤 공백을 우선 제거
+            # 단어의 '일부'만 포함되어 있어도 무조건 새 이름으로 덮어씌웁니다.
+            if '산업안전보건법' in name:
+                return '📘 산업안전보건법 질의회시집(22.05)'
+            elif '폭염' in name:
+                return '☀️ 산업안전보건규칙 질의회시집_폭염 관련(26.05)'
+            elif '중대재해' in name or '중처법' in name:
+                return '⚖️ 중대재해처벌법 질의회시집(23.05)'
+            elif '안전보건관리비' in name or '안전관리비' in name:
+                return '💰 산업안전보건관리비 질의회시집(25.06)'
+            else:
+                return name if name else "분류없음"
+                
+        df['doc_type'] = df['doc_type'].apply(rename_doc_type)
         
     return df
 
@@ -86,7 +93,7 @@ if query:
         # 교집합(AND) 검색
         for kw in keywords:
             kw_lower = kw.lower()
-            # 🌟 에러 방어 핵심 3: regex=False를 통해 괄호()나 별표* 등 특수문자로 인한 검색기 폭파 완벽 차단!
+            # 🌟 에러 방어 핵심 3
             kw_mask = filtered_df['question'].str.lower().str.contains(kw_lower, regex=False, na=False) | \
                       filtered_df['answer'].str.lower().str.contains(kw_lower, regex=False, na=False)
             mask = mask & kw_mask
